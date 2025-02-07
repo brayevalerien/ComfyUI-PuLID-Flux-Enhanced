@@ -1,4 +1,3 @@
-
 import torch
 from torch import nn, Tensor
 from torchvision import transforms
@@ -351,7 +350,7 @@ class ApplyPulidFlux:
         dtype = model.model.diffusion_model.dtype
         # For 8bit use bfloat16 (because ufunc_add_CUDA is not implemented)
         if dtype in [torch.float8_e4m3fn, torch.float8_e5m2]:
-            dtype = torch.bfloat16
+            dtype = torch.float16
 
         eva_clip.to(device, dtype=dtype)
         pulid_flux.to(device, dtype=dtype)
